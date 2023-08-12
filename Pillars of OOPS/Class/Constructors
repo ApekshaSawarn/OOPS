@@ -1,0 +1,130 @@
+Constructor in C++ is a special method that is invoked automatically at the time of object creation. It is used to initialize the data members of new objects generally.
+The constructor in C++ has the same name as the class or structure. Constructor do not return value, hence they do not have a return type. A constructor gets called
+automatically when we create the object of the class. Constructors can be overloaded. Constructor can not be declared virtual.
+
+How constructors are different from a normal member function?
+A constructor is different from normal functions in following ways:
+*** Constructor has same name as the class itself
+*** Constructors don’t have return type
+*** A constructor is automatically called when an object is created. If we do not specify a constructor, C++ compiler generates a default constructor for us
+(expects no parameters and has an empty body).
+
+Constructor can be defined inside the class declaration or outside the class declaration in C++. But in java it must be declared inside the class only.
+
+a.    Syntax for defining the constructor within the class
+
+        <class-name>(list-of-parameters)
+        {
+                  //constructor definition
+        }
+
+b.    Syntax for defining the constructor outside the class
+
+        <class-name>: :<class-name>(list-of-parameters)
+        {
+                //constructor definition
+        }
+Note: Even if we do not define any constructor explicitly, the compiler will automatically provide a default constructor implicitly.
+
+Types of constructor
+
+    • Default constructor
+    • Parameterized constructor
+    • Overloaded constructor
+    • Constructor with default value
+    • Copy constructor
+    • Inline constructor
+
+1. Default Constructors: Default constructor is the constructor which doesn’t take any argument. It has no parameters. It is also called a zero-argument constructor.
+class construct {
+public:
+    int a, b;
+ 
+    // Default Constructor
+    construct()
+    {
+        a = 10;
+        b = 20;
+    }
+};
+
+2. Parameterized Constructors: It is possible to pass arguments to constructors. Typically, these arguments help initialize an object when it is created. To create a
+parameterized constructor, simply add parameters to it the way you would to any other function. When you define the constructor’s body, use the parameters to initialize
+the object.
+Note: when the parameterized constructor is defined and no default constructor is defined explicitly, the compiler will not implicitly call the default constructor and
+hence creating a simple object as
+Student s;
+Will flash an error
+class Point {
+private:
+    int x, y;
+ 
+public:
+    // Parameterized Constructor
+    Point(int x1, int y1)
+    {
+        x = x1;
+        y = y1;
+    }
+ 
+    int getX() { return x; }
+    int getY() { return y; }
+};
+
+3. Copy Constructor: 
+A copy constructor is a member function that initializes an object using another object of the same class. Copy constructor takes a reference to an object of the same class
+as an argument.
+class Sample
+{
+    int id;
+    public:
+    void init(int x)
+    {
+        id=x;   
+    }   
+    Sample(){}  //default constructor with empty body
+     
+    Sample(Sample &t)   //copy constructor
+    {
+        id=t.id;
+    }
+    void display()
+    {
+        cout<<endl<<"ID="<<id;
+    }
+};
+Difference between shallow copy and deep copy
+*** Shallow Copy: Shallow repetition is quicker. However, it’s “lazy” it handles pointers and references. Rather than creating a contemporary copy of the particular knowledge
+the pointer points to, it simply copies over the pointer price. So, each of the first and therefore the copy can have pointers that reference constant underlying knowledge.
+*** Deep Copy: Deep repetition truly clones the underlying data. It is not shared between the first and therefore the copy. Deep copy is comparatively slower.
+
+4. Virtual constructors- In C++, the constructor cannot be virtual, because when a constructor of a class is executed there is no virtual table in the memory, means no
+virtual pointer defined yet. So, the constructor should always be non-virtual. But virtual destructor is possible.
+
+5. Constructor Overloading- Constructor overloading in object-oriented programming (OOP) refers to the practice of defining multiple constructors for a class, each with a
+different set of parameters. This allows objects of the class to be initialized in different ways, depending on the arguments provided when creating an instance of the
+class.
+class Rectangle {
+private:
+    int width;
+    int height;
+
+public:
+    // Default constructor
+    Rectangle() {
+        width = 0;
+        height = 0;
+    }
+
+    // Constructor with one parameter (sets width, height will be 0)
+    Rectangle(int w) {
+        width = w;
+        height = 0;
+    }
+
+    // Constructor with two parameters (sets both width and height)
+    Rectangle(int w, int h) {
+        width = w;
+        height = h;
+    }
+};
