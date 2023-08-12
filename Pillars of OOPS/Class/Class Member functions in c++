@@ -1,0 +1,99 @@
+Member functions are the functions, which have their declaration inside the class definition and works on the data members of the class. The definition of member functions can
+be inside or outside the definition of class.
+
+If the member function is defined inside the class definition it can be defined directly, but if its defined outside the class, then we have to use the scope resolution
+:: operator along with class name alng with function name.
+
+Eg-
+class Cube
+{
+    public:
+    int side;
+    /*
+        Declaring function getVolume 
+        with no argument and return type int.
+    */
+    int getVolume();     
+};
+
+class Cube
+{
+    public:
+    int side;
+    int getVolume();
+}
+
+// member function defined outside class definition
+int Cube :: getVolume()
+{
+    return side*side*side;
+}
+
+
+Following are the different types of Member functions:
+
+-> Simple functions
+-> Static functions
+-> Const functions
+-> Inline functions
+-> Friend functions
+
+1) Simple Member functions in C++
+These are the basic member function, which dont have any special keyword like static etc as prefix.
+Eg-
+return_type functionName(parameter_list)
+{
+    function body;
+}
+
+2) Static Member functions in C++
+Static is something that holds its position. Static is a keyword which can be used with data members as well as the member functions.These functions work for the class as
+whole rather than for a particular object of a class.
+Eg-
+class X
+{
+    public:
+    static void f()
+    {
+        // statement
+    }
+};
+
+int main()
+{
+    X::f();   // calling member function directly with class name
+}
+
+3) Const Member functions in C++
+When used with member function, such member functions can never modify the object or its related data members.
+Eg-
+void fun() const 
+{
+    // statement
+}
+
+4) Inline functions in C++
+All the member functions defined inside the class definition are by default declared as Inline.
+
+5) Friend functions in C++
+Friend functions are actually not class member function. Friend functions are made to give private access to non-class functions. You can declare a global function as
+friend, or a member function of other class as friend.
+Eg-
+class WithFriend
+{
+    int i;
+    public:
+    friend void fun(); // global function as friend
+};
+
+void fun()
+{
+    WithFriend wf;
+    wf.i=10;  // access to private data member
+    cout << wf.i;
+}
+
+int main()
+{
+    fun(); //Can be called directly
+}
