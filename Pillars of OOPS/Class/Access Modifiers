@@ -1,0 +1,92 @@
+The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class. We can change the access level of fields, constructors, methods,
+and class by applying the access modifier on it.
+
+1) Private
+The private access modifier is accessible only within the class.
+If you make any class constructor private, you cannot create the instance of that class from outside the class.
+Eg-
+class A{  
+private int data=40;  
+private void msg(){System.out.println("Hello java");}  
+}  
+  
+public class Simple{  
+ public static void main(String args[]){  
+   A obj=new A();  
+   System.out.println(obj.data);//Compile Time Error  
+   obj.msg();//Compile Time Error  
+   }  
+}
+We are accessing these private members from outside the class, so there is a compile-time error.
+
+2) Default
+If you don't use any modifier, it is treated as default by default. The default modifier is accessible only within package. It provides more accessibility than private.
+But, it is more restrictive than protected, and public.
+Eg-
+package pack;  
+class A{  
+  void msg(){System.out.println("Hello");}  
+}  
+  
+package mypack;  
+import pack.*;  
+class B{  
+  public static void main(String args[]){  
+   A obj = new A();//Compile Time Error  
+   obj.msg();//Compile Time Error  
+  }  
+}  
+The scope of class A and its method msg() is default so it cannot be accessed from outside the package.
+
+3) Protected
+The protected access modifier is accessible within package and outside the package but through inheritance only. The protected access modifier can be applied on the data
+member, method and constructor. It can't be applied on the class. It provides more accessibility than the default modifer.
+Eg-
+package pack;  
+public class A{  
+protected void msg(){System.out.println("Hello");}  
+}  
+package mypack;  
+import pack.*;  
+  
+class B extends A{  
+  public static void main(String args[]){  
+   B obj = new B();  
+   obj.msg();  
+  }  
+} 
+Output:Hello
+
+4) Public
+The public access modifier is accessible everywhere. It has the widest scope among all other modifiers.
+Eg-
+package pack;  
+public class A{  
+public void msg(){System.out.println("Hello");}  
+}  
+package mypack;  
+import pack.*;  
+  
+class B{  
+  public static void main(String args[]){  
+   A obj = new A();  
+   obj.msg();  
+  }  
+}  
+Output:Hello
+ 5) Friend
+In C++, the friend keyword is used as an access modifier that allows a non-member function or class to access private or protected members of another class. This concept is
+often used to grant specific functions or classes special access to the internals of a class, even though those internals would normally be hidden from the outside world.
+class MyClass {
+private:
+    int privateData;
+
+public:
+    friend void friendFunction(MyClass& obj); // Declaration
+
+    // ...
+};
+
+void friendFunction(MyClass& obj) {
+    obj.privateData = 42; // Access private member
+}
