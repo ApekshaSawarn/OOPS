@@ -1,0 +1,7 @@
+A class is a template for objects, and an object is an instance of a class.
+Eg- class-fruits objects-apple, banana, orange
+
+Difference between structure and class in C++?
+In C++, a structure works the same way as a class, except for just two small differences. The most important of them is hiding implementation details. A structure will by
+default not hide its implementation details from whoever uses it in code, while a class by default hides all its implementation details and will therefore by default prevent
+the programmer from accessing them.
