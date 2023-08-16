@@ -1,1 +1,8 @@
 Object is an instance of a class. 
+Object is a physical entity.
+Object is a real world entity such as pen, laptop, mobile, bed, keyboard, mouse, chair etc.
+Object is created many times as per requirement.
+There are many ways to create object in java such as new keyword, newInstance() method, clone() method, factory method and deserialization.
+Object allocates memory when it is created.	
+Object is created through new keyword mainly e.g.
+Student s1=new Student();
